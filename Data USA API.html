@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data USA API</title>
+    <style>
+        section{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color:coral;
+        }
+        h1{
+            text-align: center;
+        }
+        #box{
+            width: 400px;
+            background-color: tan;
+            margin: 10px;
+            font-size: 30px;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Data USA</h1>
+    <section id="section1"></section>
+
+
+    <script>
+        let section1 = document.querySelector('#section1')
+
+        fetch('https://datausa.io/api/data?drilldowns=Nation&measures=Population')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                let array = ''
+                data.data.forEach(element => {
+                    array += `<div id="box">
+               <b>Country Name : -</b> ${element.Nation}<br>
+                <b>Population : -</b>${element.Population}<br>
+                <b>Year : -</b>${element.Year}
+                    </div>`
+                });
+                section1.innerHTML = array
+            })
+    </script>
+</body>
+
+</html>

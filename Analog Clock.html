@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analog Clock</title>
+  <style>
+    .clock {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 8px solid black;
+      border-radius: 50%;
+      margin: 50px auto;
+      background: white;
+    }
+    .hand {
+      position: absolute;
+      width: 50%;
+      height: 6px;
+      background: black;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: transform 0.1s;
+    }
+    .hand.hour {
+      width: 35%;
+      height: 8px;
+      background: black;
+      position: relative;
+      left: 29px;
+    }
+    .hand.minute {
+      width: 45%;
+      height: 6px;
+      background: black;
+      position: relative;
+      left: 9px;
+    }
+    .hand.second {
+      width: 50%;
+      height: 2px;
+      background: red;
+    }
+    .center {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: black;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+    <div class="center"></div>
+  </div>
+  <div class="buttons">
+    <button onclick="startClock()">Start</button>
+    <button onclick="stopClock()">Stop</button>
+  </div>
+
+  <script>
+    let hour = document.getElementById('hour')
+    let minute = document.getElementById('minute')
+    let second = document.getElementById('second')
+  </script>
+</body>
+</html>

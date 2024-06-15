@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS Consept</title>
+</head>
+
+<body>
+
+
+
+
+
+    
+
+    <script>
+        class Company {
+            #Location = `Jaipur, Rajasthan`//private property
+            dept = 4
+            empNum = 2
+            constructor(floor) {
+                this.floor = floor
+            }
+            details() {
+                console.log('this is Company details', 'Floor', this.floor)
+            }
+            companyType() {
+                console.log('This is a software company')
+            }
+            showLocation() {
+                console.log(this.#Location)
+            }
+        }
+
+        class Emp extends Company {
+            constructor(name, floor) {
+                super(floor)
+                this.name = name
+            }
+            details() {
+                console.log(`Employee details - dept= ${this.dept}
+        name= ${this.name}`)
+            }
+            work() {
+                console.log(`Full Stack Developer`)
+            }
+
+            get totalSalary() {
+                return this.salary * .8
+            }
+            set bonus(bonus) {
+                this._bonus = bonus
+            }
+        }
+        let upflair = new Emp('Jayveer', 10)
+        console.log(upflair.dept)
+        upflair.details(2, 4)
+        upflair.work()
+        upflair.showLocation()
+        upflair.salary = 3000
+        console.log(upflair.totalSalary)
+        upflair.bonus = 3000
+        console.log(upflair._bonus)
+    </script>
+</body>
+
+</html>

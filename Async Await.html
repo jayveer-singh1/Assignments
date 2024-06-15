@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: grey;
+        }
+
+        .b {
+            width: 30%;
+            margin: 12px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        img {
+            height: 240px;
+            width: 240px;
+            margin-left: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Different Type of Products</h1>
+    <div class="a"></div>
+    <script>
+        let box = document.querySelector('.a')
+
+        fetch('https://dummyjson.com/products')
+            .then((res) => res.json())
+            .then(data => {
+                console.log(data)
+                let p = ''
+                data.products.forEach(element => {
+                    p += `<div class='b'>
+                    <img src="${element.thumbnail}">
+                    <p><b>Title : </b> ${element.title}</p>
+                    <p><b>Brand : </b> ${element.brand}</p>
+                    <p><b>Availability-Status : </b> ${element.availabilityStatus}</p>
+                    <p><b>category : </b> ${element.category}</p>
+                    <br>
+                    </div>
+                    <br>
+                    `
+                });
+                box.innerHTML = p
+            }
+            )
+            .catch(err => console.log(err))
+    </script>
+</body>
+
+</html>

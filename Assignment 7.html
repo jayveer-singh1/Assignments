@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box hide and slider</title>
+    <style>
+        /* Start Box Hide and Show */
+        #hands {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            margin: auto auto;
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+
+        #btn {
+            margin: 10px 710px;
+        }
+
+        /* End Button Hide and Show */
+
+        /* Start Slider Code */
+        section{
+            width: 50%;
+            height: 60vh;
+            margin: 50px auto;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 1s;
+        }
+        .nav{
+            text-align: center;
+            margin-top: 15px ;
+        }
+        .nav button{
+            font-size: 25px;
+            padding: 5px;
+        }
+        /* End Slider Code */
+    </style>
+</head>
+
+<body>
+    <!-- Start Box Hide and Show -->
+    <div id="hands">Box</div>
+    <button id="btn">Box Hide/Show</button>
+    <!-- End Button Hide and Show -->
+
+    <!-- Start Slider Code -->
+    <section>
+        <img src="Slide Image 1.jpg" class="slide" alt="">
+        <img src="Slide Image 2.jpg" class="slide" alt="">
+        <img src="Slide Image 3.jpg" class="slide" alt="">
+        <img src="Slide Image 4.jpg" class="slide" alt="">
+    </section>
+    <div class="nav">
+        <button onclick="goPrev()">Prev</button>
+        <button onclick="goNext()">Next</button>
+    </div>
+    <!-- End Slider Code  -->
+
+    <script src="Assignment 7.js"></script>
+</body>
+
+</html>
