@@ -12,8 +12,10 @@ export default function Form2() {
             <form action="">
                 <input type="number" onChange={Count}/>
                 <p>{number}</p>
+
+                <input type="submit" onClick={(e)=>e.preventDefault()}/>
             </form>
         </>
     )
-} 
+}
 

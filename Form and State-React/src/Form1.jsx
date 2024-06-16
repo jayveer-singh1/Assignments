@@ -36,10 +36,13 @@ export default function From1() {
                 <input type="search" onChange={(e)=>setSearch(e.target.value)}/>
             </label>
             <p>{search}</p>
+
+            <input type="submit"  onClick={(e)=>e.preventDefault()}/>
             <br />
             <br />
             <br />
             <br />
+            <hr />
             <br />
         </form>
     )
