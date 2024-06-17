@@ -15,7 +15,7 @@ function Dark() {
       <div style={{ backgroundColor: isDark ? "black" : "", color: "tan", width: '100px', height: "100px" }}>
         This IS Containt
       </div>
-      <button onClick={mode}>Dark Mode</button>
+      <button onClick={mode}>{isDark?"Light Mode":"Dark Mode"}</button>
     <br />
 
     </>
@@ -36,10 +36,10 @@ export function Hide() {
 
   return (
     <>
-      <div style={{ visibility: isOpen ? "hidden" : "" }}>
+      {isOpen?<div>
         This is Containt
-      </div>
-      <button onClick={onHide}>Hide</button>
+      </div>:""}
+      <button onClick={onHide}>{isOpen? "Hide":"show"}</button>
     </>
   )
 }
