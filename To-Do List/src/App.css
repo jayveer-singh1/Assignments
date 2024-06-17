@@ -9,6 +9,9 @@ h1 {
     text-align: center;
 }
 
+h2{
+    margin: 20px 0px;
+}
 .addbtn {
     background-color: black;
     box-shadow: none;
@@ -23,7 +26,7 @@ h1 {
     height: 35px;
     width: 300px;
     background-color: azure;
-    border-radius: 20px;
+    border-radius: 15px;
     font-size: 20px;
     padding-left: 15px;
 }
@@ -31,4 +34,22 @@ h1 {
 .box-1 {
     margin-top: 30px;
     margin-left: 600px;
+}
+
+.btn{
+    margin: 0px 10px;
+}
+
+.underline{
+    width: 500px;
+    margin: 10px;
+}
+
+.checkbtn{
+    height: 25px;
+    width: 25px;
+}
+
+.todoData{
+    font-size: 30px;
 }

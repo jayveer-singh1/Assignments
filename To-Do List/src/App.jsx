@@ -1,63 +1,70 @@
 import { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
 import './App.css'
 import EditIcon from '@mui/icons-material/Edit';
 
+
 function App() {
-  const [text, setText] = useState('')
-  const [todo, setTodo] = useState([])
-  let addTodo = () => {
-    // let newTodo=[...todo]
-    // newTodo.push(text)
-    // setTodo(newTodo)
-    // setText('')
-    let newTodo = [...todo]
+  const [todo, setTodo] = useState('');
+  const [todos, setTodos] = useState([]);
 
-    if (todo.length >= 1) {
-      let newId = todo[todo.length - 1].id + 1
-      newTodo.push({ id: newId, task: text, isComplete: false })
+  const editBtn = (id) => {
+    let t = todos.find((i) => i.id === id);
+    setTodo(t.todo);
+    let newTodos = todos.filter((item) => item.id !== id);
+    setTodos(newTodos);
+  };
+
+  const deleteBtn = (id) => {
+    let newTodos = todos.filter((item) => item.id !== id);
+    setTodos(newTodos);
+  };
+
+  const addBtn = () => {
+    if (todo !== '') {
+      setTodos([...todos, { id: todos.length, todo, isCompleted: false }]);
+      setTodo('');
     }
-    else newTodo.push({ id: 1, task: text, isComplete: false })
-    setTodo(newTodo)
-    setText('')
-    console.log(todo)
-  }
-  let deleteTast = (i) => {
-    let newTodo = [...todo]
-    newTodo.splice(i, 1)
-    setTodo(newTodo)
+  };
 
-    // setTodo(todo.filter((v,index)=>index!=i))
-  }
-  let taskComplete = (i) => {
-    let newTodo = [...todo]
-    newTodo[i].isComplete = true
-    setTodo(newTodo)
-  }
-  return (<>
-  <h1>To Do List</h1>
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
+
+  const CheckboxBtn = (id) => {
+    let index = todos.findIndex((item) => item.id === id);
+    let newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    setTodos(newTodos);
+  };
+
+  return (
+    <>
+    <h1>To Do list</h1>
     <div className='box-1'>
-      <input type="text" onChange={(e) => setText(e.target.value)} value={text} className='inputText' placeholder='What will you do?' />
-      <button onClick={addTodo} className='addbtn'><AddIcon /></button>
+      <input onChange={handleChange} value={todo} type="text" className='inputText' placeholder='What will You Do?'/>
+      <button onClick={addBtn} className='addbtn'>
+        <AddIcon/>
+      </button>
+      <h2>Your Todos</h2>
+      {todos.map((item) => (
+        <div key={item.id}>
+          <input
+            name={item.id}
+            onChange={() => CheckboxBtn(item.id)}
+            type="checkbox"
+            checked={item.isCompleted} className='checkbtn'
+          />
+          <span style={{ marginLeft: '10px', textDecoration: item.isCompleted ? 'line-through' : 'none' }} className='todoData'>{item.todo}</span>
+          <button onClick={() => editBtn(item.id)}className='btn'><EditIcon/></button>
+          <button onClick={() => deleteBtn(item.id)}><DeleteIcon/></button>
+          <hr className='underline'/>
+        </div>
+      ))}
     </div>
-
-    <ol className='box-1'>
-      {todo.map((v, i) => {
-        return <li>
-          <span style={{ textDecoration: v.isComplete ? 'line-through' : 'none' }}>{v.task} </span>
-          <button onClick={() => taskComplete(i)}><DoneIcon /></button>
-          <button onClick={() => deleteTast(i)}><DeleteIcon /></button>
-
-        </li>
-      })
-      }
-    </ol>
-
-  </>
-
-  )
+    </>
+  );
 }
 
-export default App
+export default App;
