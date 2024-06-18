@@ -43,7 +43,7 @@ function App() {
     <>
     <h1>To Do list</h1>
     <div className='box-1'>
-      <input onChange={handleChange} value={todo} type="text" className='inputText' placeholder='What will You Do?'/>
+      <input onChange={handleChange} value={todo} type="text" className='inputText' placeholder='What Will You Do?'/>
       <button onClick={addBtn} className='addbtn'>
         <AddIcon/>
       </button>
